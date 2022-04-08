@@ -38,7 +38,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 		<Container className='p-5 border rounded-3 bg-light'>
 			<div className='d -flex justify-content-between'>
 				<div>
-					<h2>{trip.name}</h2>
+					<h2>{trip.label}</h2>
 				</div>
 				{userInfo && userInfo.username === trip.owner && (
 					<div>
@@ -53,7 +53,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 					</div>
 				)}
 			</div>
-			<h3>Cuisine: {trip.cuisine}</h3>
+			<h3>Cuisine: {trip.destination}</h3>
 			<Image rounded fluid src={trip.photo} />
 			<h2 className='mt-4'>Reviews: </h2>
 			{!trip.reviews.length && <p>No reviews yet!</p>}

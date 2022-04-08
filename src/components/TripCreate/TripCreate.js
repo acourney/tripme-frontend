@@ -4,14 +4,15 @@ import TripForm from '../TripForm/TripForm';
 import API_URL from '../../apiConfig';
 const TripCreate = ({ loggedIn }) => {
 	const initialTripData = {
-		name: '',
-		cuisine: '',
+		label: '',
+		destination: '',
 		photo: '',
 	};
 	const navigate = useNavigate();
 	const [newTrip, setNewTrip] = useState(initialTripData);
 	const handleChange = (event) => {
 		setNewTrip((prevState) => {
+            // return { ...prevState, [event.target.label]: event.target.value };
 			return { ...prevState, [event.target.name]: event.target.value };
 		});
 	};

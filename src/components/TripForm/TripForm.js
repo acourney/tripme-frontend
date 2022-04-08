@@ -10,35 +10,35 @@ const TripForm = ({
 	return (
 		<div className='w-75 p-3'>
 			<Form onSubmit={handleSubmit} encType='multipart/form-data'>
-				<Form.Group controlId='name'>
-					<Form.Label>Name</Form.Label>
+				<Form.Group controlId='label'>
+					<Form.Label>Label</Form.Label>
 					<Form.Control
 						required
 						autoFocus
 						type='text'
-						name='name'
+						name='label'
 						onChange={handleChange}
-						value={formData.name}
+						value={formData.label}
 					/>
 				</Form.Group>
-				<Form.Group controlId='cuisine'>
-					<Form.Label>Cuisine</Form.Label>
+				<Form.Group controlId='destination'>
+					<Form.Label>Destination</Form.Label>
 					<Form.Control
 						required
 						type='text'
-						name='cuisine'
+						name='destination'
 						onChange={handleChange}
-						value={formData.cuisine}
+						value={formData.destination}
 					/>
 				</Form.Group>
-				<Form.Group controlId='photo'>
+				{/* <Form.Group controlId='photo'>
 					<Form.Label>Photo</Form.Label>
 					<Form.Control
 						type='file'
 						name='photo'
 						accept='image/*'
 						onChange={handleFileUpload}></Form.Control>
-				</Form.Group>
+				</Form.Group> */}
 
 				<Button className='mt-4' type='submit' disabled={error}>
 					Submit
