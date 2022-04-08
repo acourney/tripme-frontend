@@ -2,12 +2,14 @@ import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
+import './Navigation.css';
+
 const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
 	return (
 		<Navbar bg='light' expand='lg' collapseOnSelect={true}>
 			<Container>
 				<LinkContainer to='/'>
-					<Navbar.Brand>TripMe</Navbar.Brand>
+					<Navbar.Brand><img src='https://imgur.com/LGdBtYJ.png' alt="trip me logo"/>TripMe</Navbar.Brand>
 				</LinkContainer>
 				<Navbar.Toggle aria-controls='basic-navbar-nav' />
 				<Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>
