@@ -1,0 +1,12 @@
+main {
+	margin-top: 1rem;
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 1200px;
+}
+
+.card-img-top {
+	width: 100%;
+	height: 20vw;
+	object-fit: cover;
+}
