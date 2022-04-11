@@ -27,8 +27,12 @@ span {
     margin-right: 0px;
 }
 
-@media screen and (min-width: 700px) {
-    .col {
+@media screen and (min-width: 768px) {
+    
+    .row-cols-md-3 {
+        width:100%;
+    }
+    .mb-4.col{
         width: 100%;
     }
 }
