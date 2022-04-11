@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, CardGroup, Button } from 'react-bootstrap';
 import API_URL from '../../apiConfig';
 
+import './Trips.css';
+
 const Trips = ({ loggedIn }) => {
 	const [trips, setTrips] = useState([]);
 	const [error, setError] = useState(false);
@@ -15,6 +17,7 @@ const Trips = ({ loggedIn }) => {
 			if (response.status === 200){
 				const data = await response.json();
 				setTrips(data);
+                console.log(data);
 			} else {
 				setError(true)
 			}
@@ -53,9 +56,11 @@ const Trips = ({ loggedIn }) => {
 								<Card>
 									<Card.Img variant='top' src={trip.photo} />
 									<Card.Body>
-										<Card.Title>{trip.name}</Card.Title>
+										<Card.Title>{trip.label}</Card.Title>
 										<Card.Text>
-											Todo List Here:
+										    Destination: {trip.destination}
+                                            
+                                            <span><br />read more...</span>
 										</Card.Text>
 									</Card.Body>
 								</Card>

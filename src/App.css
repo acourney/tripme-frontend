@@ -11,3 +11,32 @@ main {
 	object-fit: cover;
 }
 
+@media screen and (min-width: 700px) {
+  .row-cols-1{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+  
+      width: 100%;
+  }
+  
+  .card-img-top {
+      height: 100%;
+      grid-column: 1 / span 1;
+  }
+  
+  .card-body {
+      grid-column: 2 / span 1;
+  }
+  
+  span {
+      font-size: .75rem;
+      margin-right: 0px;
+  }
+}
