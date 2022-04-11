@@ -23,8 +23,8 @@ const Login = ({ handleSetLoggedIn }) => {
 		// write a post request to /token/login
 		try {
 			const response = await fetch(API_URL + 'token/login/', {
-				method: 'POST',
-				body: JSON.stringify(formData),
+				method: 'GET',
+				body: JSON.stringify(formData.users),
 				headers: {
 					'Content-Type': 'application/json',
 				},

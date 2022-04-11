@@ -9,6 +9,7 @@ import Trips from './components/Trips/Trips';
 import TripDetail from './components/TripDetail/TripDetail';
 import TripCreate from './components/TripCreate/TripCreate';
 import TripEdit from './components/TripEdit/TripEdit';
+import MakeGroup from './components/MakeGroup/MakeGroup';
 
 import './App.css';
 import API_URL from './apiConfig';
@@ -107,7 +108,8 @@ function App() {
 								<TripDetail userInfo={userInfo} loggedIn={loggedIn} />
 							}
 						/>
-						<Route path='/trips/:id/edit' element={<TripEdit />} />
+						<Route path='/trips/:id/add-group-member' element={<MakeGroup />} />
+
 					</Routes>
 				</Container>
 			</main>

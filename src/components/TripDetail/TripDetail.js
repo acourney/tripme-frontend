@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Container, Image, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Container, Image, Button, Navbar, Nav } from 'react-bootstrap';
 import useTripDetail from '../../hooks/useTripDetail';
 import API_URL from '../../apiConfig';
-import MessageApp from '../Messaging/MessageApp'
+import MessageApp from '../Messaging/MessageApp';
+import MakeGroup from '../MakeGroup/MakeGroup';
 
 const TripDetail = ({ userInfo, loggedIn }) => {
 	let navigate = useNavigate();
@@ -82,7 +84,11 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 						</Container>
 					);
 				})}
-                <MessageApp />
+				<LinkContainer to='/trips/:id/add-group-member'>
+									<Nav.Link>Add Friends to Your Group</Nav.Link>
+								</LinkContainer>
+				
+                
 		</Container>
 	);
 };
