@@ -31,14 +31,14 @@ const TripForm = ({
 						value={formData.destination}
 					/>
 				</Form.Group>
-				{/* <Form.Group controlId='photo'>
+				<Form.Group controlId='photo'>
 					<Form.Label>Photo</Form.Label>
 					<Form.Control
 						type='file'
 						name='photo'
 						accept='image/*'
 						onChange={handleFileUpload}></Form.Control>
-				</Form.Group> */}
+				</Form.Group>
 
 				<Button className='mt-4' type='submit' disabled={error}>
 					Submit

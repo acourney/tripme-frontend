@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Container, Image, Button } from 'react-bootstrap';
 import useTripDetail from '../../hooks/useTripDetail';
 import API_URL from '../../apiConfig';
+import MessageApp from '../Messaging/MessageApp'
 
 const TripDetail = ({ userInfo, loggedIn }) => {
 	let navigate = useNavigate();
@@ -53,24 +54,24 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 					</div>
 				)}
 			</div>
-			<h3>Cuisine: {trip.destination}</h3>
+			<h3>Destination: {trip.destination}</h3>
 			<Image rounded fluid src={trip.photo} />
-			<h2 className='mt-4'>Reviews: </h2>
-			{!trip.reviews.length && <p>No reviews yet!</p>}
-			{loggedIn && <Button className='mb-5'>Write a review</Button>}
-			{trip.reviews.length > 0 &&
-				trip.reviews.map((review) => {
+			<h2 className='mt-4'>Todos: </h2>
+			{!trip.todos.length && <p>No todos yet!</p>}
+			{loggedIn && <Button className='mb-5'>Write a todo</Button>}
+			{trip.todos.length > 0 &&
+				trip.todos.map((todo) => {
 					return (
 						<Container
 							className='m-4 p-5 border rounded-3 bg-light'
-							key={review.id}>
-							<h4>{review.title}</h4>
-							<p>{review.body}</p>
+							key={todo.id}>
+							<h4>{todo.title}</h4>
+							<p>{todo.body}</p>
 							<small>
-								Posted by: {review.owner} at{' '}
-								{new Date(review.created).toLocaleString()}
+								Posted by: {todo.owner} at{' '}
+								{new Date(todo.created).toLocaleString()}
 							</small>
-							{userInfo && userInfo.username === review.owner && (
+							{userInfo && userInfo.username === todo.owner && (
 								<div>
 									<Button variant='secondary' className='m-4'>
 										Edit
@@ -81,6 +82,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 						</Container>
 					);
 				})}
+                <MessageApp />
 		</Container>
 	);
 };
