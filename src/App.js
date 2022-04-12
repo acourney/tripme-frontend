@@ -59,6 +59,7 @@ function App() {
 				setUserInfo(null);
 				// remove token from local storage
 				localStorage.removeItem('token');
+				localStorage.removeItem('password');
 				alert('You have been logged out!');
 				navigate('/');
 			}

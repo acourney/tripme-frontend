@@ -4,6 +4,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import API_URL from '../../apiConfig';
 
 const Signup = () => {
+
+  
+    
+
 	const initialFormData = {
 		email: '',
 		username: '',
@@ -17,6 +21,8 @@ const Signup = () => {
 	const [success, setSuccess] = useState(false);
 	const [signupErrors, setSignupErrors] = useState([]);
 	const [serverError, setServerError] = useState(false);
+	const [password, setPassword] = useState("");
+
 	const handleChange = (event) => {
 		setFormData((prevState) => {
 			return { ...prevState, [event.target.name]: event.target.value };
@@ -71,7 +77,36 @@ const Signup = () => {
 		} else {
 			setError(false);
 		}
+		setPassword(formData.password);
+		localStorage.setItem('password', formData.password);
 	};
+
+      // add new users to chat api as well:
+      useEffect(() => {
+        var axios = require('axios');
+        var data = { "username": formData.username,
+        "secret": formData.password,
+        "email": formData.email,
+        }
+        
+        var config = {
+            method: 'post',
+            url: 'https://api.chatengine.io/users/',
+            headers: {
+                'PRIVATE-KEY': '3f463544-f5cf-4541-b167-dfa699445b3b'
+            },
+            data : data
+        };
+
+        axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+        console.log("user added to chat api");
+    }, [formData]);
 
 	return (
 		<div className='w-75 p-3'>

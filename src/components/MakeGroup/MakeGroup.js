@@ -26,24 +26,25 @@ const MakeGroup = () => {
         event.preventDefault();
         console.log(formData);
         try {
-            const response = await fetch(API_URL + 'users/', {
-                method: 'GET',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+            const response = await fetch('http://localhost:8000' + 'users/');
             // log the auth token
-            if (response.status === 200) {
-                const data = await response.json();
-                handleValidUser();
+            // if (response.status === 200) {
+            //     const data = await response.json();
+            //     handleValidUser();
                 
                 
-            } else if (response.status === 400) {
-                setError(true);
+            // } else if (response.status === 400) {
+            //     setError(true);
     
-                }
+            //     }
             console.log(response);
+            if (response.status === 200) {
+				const data = await response.json();
+				console.log(data);
+			} else if (response.status === 400) {
+				setError(true);
+
+				}
         } catch (error) {
             // handle errors
             console.log("error");

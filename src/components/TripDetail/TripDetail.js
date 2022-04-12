@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Container, Image, Button, Navbar, Nav } from 'react-bootstrap';
 import useTripDetail from '../../hooks/useTripDetail';
 import API_URL from '../../apiConfig';
-import MessageApp from '../Messaging/MessageApp';
+import ChatEngineMessenger from '../Messaging/ChatEngineMessenger';
 import MakeGroup from '../MakeGroup/MakeGroup';
 
 const TripDetail = ({ userInfo, loggedIn }) => {
@@ -87,6 +87,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 				<LinkContainer to='/trips/:id/add-group-member'>
 									<Nav.Link>Add Friends to Your Group</Nav.Link>
 								</LinkContainer>
+								<ChatEngineMessenger />
 				
                 
 		</Container>

@@ -23,17 +23,19 @@ const Login = ({ handleSetLoggedIn }) => {
 		// write a post request to /token/login
 		try {
 			const response = await fetch(API_URL + 'token/login/', {
-				method: 'GET',
-				body: JSON.stringify(formData.users),
+				method: 'POST',
+				body: JSON.stringify(formData),
 				headers: {
 					'Content-Type': 'application/json',
 				},
+
 			});
 			// log the auth token
 			if (response.status === 200) {
 				const data = await response.json();
 				handleSetLoggedIn(data.auth_token);
 				navigate('/');
+				localStorage.setItem('password', formData.password);
 				
 			} else if (response.status === 400) {
 				setError(true);
