@@ -32,6 +32,9 @@ const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
 								<LinkContainer to='/'>
 									<Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
 								</LinkContainer>
+								<LinkContainer to='/message-center'>
+									<Nav.Link>Message Center</Nav.Link>
+								</LinkContainer>
 							</>
 						) : (
 							<>

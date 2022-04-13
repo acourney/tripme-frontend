@@ -148,7 +148,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 				<LinkContainer to='/trips/:id/add-group-member'>
 					<Nav.Link><Button>Add Friends to Your Group</Button></Nav.Link>
 				</LinkContainer>
-				<ChatEngineMessenger />
+				
 				
                 
 		</Container>
