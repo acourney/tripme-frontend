@@ -10,6 +10,7 @@ import TripDetail from './components/TripDetail/TripDetail';
 import TripCreate from './components/TripCreate/TripCreate';
 import TripEdit from './components/TripEdit/TripEdit';
 import MakeGroup from './components/MakeGroup/MakeGroup';
+import GettingStarted from './components/GettingStarted/GettingStarted';
 
 import './App.css';
 import API_URL from './apiConfig';
@@ -110,6 +111,8 @@ function App() {
 							}
 						/>
 						<Route path='/trips/:id/add-group-member' element={<MakeGroup />} />
+						
+						<Route path='/getting-started' element={<GettingStarted />} />
 
 					</Routes>
 				</Container>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Image } from 'react-bootstrap';
-
+import {  Navbar, Container, Image } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const Home = () => {
 	return (
@@ -13,7 +13,9 @@ const Home = () => {
 				src='https://cdn.pixabay.com/photo/2014/11/03/10/44/camera-514992_1280.jpg'
 			/>
 		</Container>
-        
+        <LinkContainer to='/getting-started'>
+			<Navbar.Brand>New to TripMe? Click Here to Get Started</Navbar.Brand>
+		</LinkContainer>
         </>
 	);
 };

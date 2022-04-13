@@ -5,8 +5,8 @@ import API_URL from '../../apiConfig';
 
 const MakeGroup = () => {
 	const initialFormData = {
-        name: '',
-		users: '',
+        trip: '',
+		member: '',
 	};
 
 	const navigate = useNavigate();
@@ -21,22 +21,21 @@ const MakeGroup = () => {
     const handleValidUser = () => {
 		setValidUser(true);
 	};
-
+	// send put request with user id
     const handleGroupCreation = async (event) => {
         event.preventDefault();
         console.log(formData);
         try {
-            const response = await fetch('http://localhost:8000' + 'users/');
-            // log the auth token
-            // if (response.status === 200) {
-            //     const data = await response.json();
-            //     handleValidUser();
-                
-                
-            // } else if (response.status === 400) {
-            //     setError(true);
-    
-            //     }
+            const response = await fetch(API_URL + 'members/', {
+				method: 'POST',
+				body: JSON.stringify({
+					'trip': formData.trip,
+					'members': formData.member
+				}),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
             console.log(response);
             if (response.status === 200) {
 				const data = await response.json();
@@ -57,73 +56,34 @@ const MakeGroup = () => {
 		});
 	};
 
-	// const handleSignup = async (event) => {
-	// 	event.preventDefault();
-	// 	setMakeGroupErrors([]);
-	// 	setError(false);
-	// 	setServerError(false);
-	// 	try {
-	// 		const response = await fetch(API_URL + 'groups/', {
-	// 			method: 'POST',
-	// 			body: JSON.stringify(formData),
-	// 			headers: {
-	// 				'Content-Type': 'application/json',
-    //                 Authorization: `Token ${localStorage.getItem('token')}`,
-	// 			},
-	// 		});
-	// 		if (response.status === 201) {
-	// 			// user was created
-	// 			setSuccess(true);
-	// 			// redirect to login
-	// 			setTimeout(() => {
-	// 				navigate('/trips');
-	// 			}, 5000);
-	// 		} else if (response.status === 400) {
-	// 			// status 400 -- something bad about the request
-	// 			// let user know what's wrong with their signup
-	// 			const data = await response.json();
-	// 			const errors = [];
-	// 			for (const error in data) {
-	// 				errors.push(data[error]);
-	// 			}
-
-	// 			setMakeGroupErrors(errors);
-	// 		} else {
-	// 			// set error to true
-	// 			setServerError(true);
-	// 		}
-	// 		console.log(response);
-	// 	} catch (error) {
-	// 		console.log(error);
-	// 		setServerError(true);
-	// 	}
-	// 	return;
-	// };
-
+	
 
 	return (
 		<div className='w-75 p-3'>
-			<h2>Add Travel Buddies to Your Group</h2>
+			<h2>Add A Travel Partner to Your Trip:</h2>
+			{/* most likely will need to update with trip_id and not the trip label */}
+			{/* not sure how to get that information for the post request */}
+			{/* in SQL: SELECT trip_id FROM trips_trip WHERE 'label' = 'Hiking Trip'; */}
 			<Form onSubmit={handleGroupCreation}>
                 <Form.Group controlId='group_name'>
-					<Form.Label>Group Label:</Form.Label>
+					<Form.Label>Trip Label:</Form.Label>
 					<Form.Control
 						required
 						autoFocus
 						type='text'
 						name='name'
-						value={formData.name}
+						value={formData.trip}
 						onChange={handleChange}
 					/>
 				</Form.Group>
 				<Form.Group controlId='username'>
-					<Form.Label>Username:</Form.Label>
+					<Form.Label>Friend's Username:</Form.Label>
 					<Form.Control
 						required
 						autoFocus
 						type='text'
 						name='users'
-						value={formData.users}
+						value={formData.member}
 						onChange={handleChange}
 					/>
 				</Form.Group>
