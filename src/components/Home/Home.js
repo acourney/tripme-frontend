@@ -1,22 +1,62 @@
 import React from 'react';
-import {  Navbar, Container, Image } from 'react-bootstrap';
+import {  Navbar, Container, Image, Card } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+
+import './Home.css';
 
 const Home = () => {
 	return (
-        <>
-		<Container className='p-5 border rounded-3 bg-light'>
-			<h1>TripMe</h1>
-			<Image
-				rounded
-				fluid
-				src='https://cdn.pixabay.com/photo/2014/11/03/10/44/camera-514992_1280.jpg'
-			/>
-		</Container>
+        <div className='home-container'>
+
+
+		<Card className="bg-dark text-black">
+			<Card.Img src="https://imgur.com/c2bBXMS.jpg" alt="Card image" />
+			<Card.ImgOverlay>
+				<Card.Title>TripMe</Card.Title>
+
+				<Card.Text>Travel Planning</Card.Text>
+			</Card.ImgOverlay>
+		</Card>
+
+		<Card className="bg-dark text-black">
+			<Card.Img src="https://imgur.com/nK3UMrH.jpg" alt="Card image" />
+			<Card.ImgOverlay>
+				<Card.Title>TripMe</Card.Title>
+				<Card.Text>
+					View your planned trips
+				</Card.Text>
+
+			</Card.ImgOverlay>
+		</Card>
+
+		<Card className="bg-dark text-black">
+			<Card.Img src="https://imgur.com/KwGNlLq.jpg" alt="Card image" />
+			<Card.ImgOverlay>
+				<Card.Title>TripMe</Card.Title>
+				<Card.Text>
+					Message your friends
+				</Card.Text>
+
+			</Card.ImgOverlay>
+		</Card>
+
+		<Card className="bg-dark text-black">
+			<Card.Img src="https://imgur.com/dQiPknL.jpg" alt="Card image" />
+			<Card.ImgOverlay>
+				<Card.Title>TripMe</Card.Title>
+				<Card.Text>
+					View trip details
+				</Card.Text>
+
+			</Card.ImgOverlay>
+		</Card>
+
+
+
         <LinkContainer to='/getting-started'>
 			<Navbar.Brand>New to TripMe? Click Here to Get Started</Navbar.Brand>
 		</LinkContainer>
-        </>
+        </div>
 	);
 };
 
