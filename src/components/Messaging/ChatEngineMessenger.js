@@ -49,7 +49,7 @@ const password = process.env.CHATENGINE_ADMIN_USER_SECRET;
         <ChatEngine
             height="75vh"
             width="100%"
- 			projectID=''
+ 			projectID='9e7ab93a-c0ed-495a-bb2e-eb8e85401a0e'
  			userName={userInfo.username}
  			userSecret={localStorage.getItem('password')}
  		/>) }

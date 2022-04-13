@@ -13,7 +13,12 @@ const Trips = ({ loggedIn }) => {
 		try {
 			setError(false)
 			//get all the trips 
-			const response = await fetch(API_URL + 'trips');
+			const response = await fetch(API_URL + 'trips', {
+				method: 'GET',
+				headers: {
+					Authorization: `Token ${localStorage.getItem('token')}`,
+				},
+			});
 			if (response.status === 200){
 				const data = await response.json();
 				setTrips(data);
@@ -33,8 +38,16 @@ const Trips = ({ loggedIn }) => {
 		getTripsList();
 	}, []);
 
-	if (error && !trips.length) {
+	if (error) {
 		return <div>Ooops, something went wrong! Please try again later!</div>;
+	}
+
+	if (!trips.length) {
+		{loggedIn && (
+			<Link to='/trips/new'>
+				<Button className='mb-4'>Add a trip</Button>
+			</Link>
+		)}
 	}
 
 	return (
