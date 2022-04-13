@@ -1,49 +1,57 @@
 import { useEffect, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import API_URL from '../../apiConfig';
 
 const MakeGroup = () => {
-	const initialFormData = {
-        trip: '',
-		member: '',
-	};
-
 	const navigate = useNavigate();
 
-	const [formData, setFormData] = useState(initialFormData);
+	const { id } = useParams();
+	const [formData, setFormData] = useState(null);
 	const [error, setError] = useState(false);
 	const [success, setSuccess] = useState(false);
 	const [makeGroupErrors, setMakeGroupErrors] = useState([]);
 	const [serverError, setServerError] = useState(false);
     const [validUser, setValidUser] = useState(false);
 
-    const handleValidUser = () => {
-		setValidUser(true);
+
+	const getTripDetail = async () => {
+		try {
+			const response = await fetch(API_URL + `trips/${id}`);
+			if (response.status === 200) {
+				const data = await response.json();
+				setFormData(data);
+				console.log(data.members)
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	};
+
+	useEffect(() => {
+		getTripDetail();
+	}, []);
+
+	
+    // const handleValidUser = () => {
+	// 	setValidUser(true);
+	// };
 	// send put request with user id
     const handleGroupCreation = async (event) => {
         event.preventDefault();
-        console.log(formData);
+		const formData = new FormData(event.target);
+
         try {
-            const response = await fetch(API_URL + 'members/', {
-				method: 'POST',
-				body: JSON.stringify({
-					'trip': formData.trip,
-					'members': formData.member
-				}),
+            const response = await fetch(API_URL + `trips/${id}`, {
+				method: 'PUT',
+				body: formData,
 				headers: {
-					'Content-Type': 'application/json',
+					Authorization: `Token ${localStorage.getItem('token')}`,
 				},
 			});
-            console.log(response);
             if (response.status === 200) {
-				const data = await response.json();
-				console.log(data);
-			} else if (response.status === 400) {
-				setError(true);
-
-				}
+				navigate(`/trips/${id}`);
+			} 
         } catch (error) {
             // handle errors
             console.log("error");
@@ -51,12 +59,12 @@ const MakeGroup = () => {
     }
 
 	const handleChange = (event) => {
-		setFormData((prevState) => {
-			return { ...prevState, [event.target.name]: event.target.value };
-		});
+		setFormData({ ...formData, members: event.target.value });
 	};
 
-	
+	if (!formData) {
+		return null;
+	}
 
 	return (
 		<div className='w-75 p-3'>
@@ -64,29 +72,41 @@ const MakeGroup = () => {
 			{/* most likely will need to update with trip_id and not the trip label */}
 			{/* not sure how to get that information for the post request */}
 			{/* in SQL: SELECT trip_id FROM trips_trip WHERE 'label' = 'Hiking Trip'; */}
-			<Form onSubmit={handleGroupCreation}>
-                <Form.Group controlId='group_name'>
+
+			<Form onSubmit={handleGroupCreation} encType='multipart/form-data'>
+				{/* <Form.Group controlId='trip'>
+					<Form.Label>Trip Label:</Form.Label>
+					<Form.Control required autoFocus type='text' name='trip' value={formData.trip}
+						onChange={handleChange} />
+				</Form.Group> */}
+				<Form.Group controlId='members'>
+					<Form.Label>Friend's email:</Form.Label>
+					<Form.Control required type='text' name='members' value={formData.members}
+						onChange={handleChange} />
+				</Form.Group>
+				{/* </Form.Group>
+                <Form.Group controlId='trip_label'>
 					<Form.Label>Trip Label:</Form.Label>
 					<Form.Control
 						required
 						autoFocus
 						type='text'
-						name='name'
+						name='trip_label'
 						value={formData.trip}
 						onChange={handleChange}
 					/>
 				</Form.Group>
-				<Form.Group controlId='username'>
-					<Form.Label>Friend's Username:</Form.Label>
+				<Form.Group controlId='user_email'>
+					<Form.Label>Friend's Email:</Form.Label>
 					<Form.Control
 						required
 						autoFocus
 						type='text'
-						name='users'
+						name='user_email'
 						value={formData.member}
 						onChange={handleChange}
 					/>
-				</Form.Group>
+				</Form.Group> */}
 				<Button type='submit' disabled={error}>
 					Add To Group
 				</Button>

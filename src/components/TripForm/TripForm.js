@@ -39,6 +39,7 @@ const TripForm = ({
 						accept='image/*'
 						onChange={handleFileUpload}></Form.Control>
 				</Form.Group>
+				
 
 				<Button className='mt-4' type='submit' disabled={error}>
 					Submit

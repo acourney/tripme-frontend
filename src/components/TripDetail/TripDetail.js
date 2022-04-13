@@ -65,7 +65,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 				<div>
 					<h2>{trip.label}</h2>
 				</div>
-				{userInfo && userInfo.username === trip.owner && (
+				{userInfo && userInfo.id === trip.owner && (
 					<div>
 						<Link
 							to={`/trips/${trip.id}/edit`}
@@ -145,7 +145,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 				})} */}
 				{/* </Container> */}
 
-				<LinkContainer to='/trips/:id/add-group-member'>
+				<LinkContainer to={`/trips/${trip.id}/add-friends`}>
 					<Nav.Link><Button>Add Friends to Your Group</Button></Nav.Link>
 				</LinkContainer>
 				

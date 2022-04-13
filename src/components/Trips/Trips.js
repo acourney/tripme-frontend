@@ -5,7 +5,7 @@ import API_URL from '../../apiConfig';
 
 import './Trips.css';
 
-const Trips = ({ loggedIn }) => {
+const Trips = ({ userInfo, loggedIn }) => {
 	const [trips, setTrips] = useState([]);
 	const [error, setError] = useState(false);
 
@@ -21,8 +21,19 @@ const Trips = ({ loggedIn }) => {
 			});
 			if (response.status === 200){
 				const data = await response.json();
-				setTrips(data);
-                console.log(data);
+				
+
+				let uniqueData = [];
+				data.forEach((obj) => {
+					if (!uniqueData.includes(obj)) {
+						uniqueData.push(obj);
+					}
+				});
+
+				setTrips(uniqueData);
+                console.log(uniqueData);
+
+
 			} else {
 				setError(true)
 			}
@@ -39,7 +50,7 @@ const Trips = ({ loggedIn }) => {
 	}, []);
 
 	if (error) {
-		return <div>Ooops, something went wrong! Please try again later!</div>;
+		return <div>Please log in to see your trips. If you are logged in, please refresh the page and try again later.</div>;
 	}
 
 	if (!trips.length) {
@@ -54,9 +65,17 @@ const Trips = ({ loggedIn }) => {
 		<Container>
 			<h1>Trips</h1>
 			{loggedIn && (
+				<p>Your user ID is {userInfo.id}, share this with friends to be added to their trips!</p>				
+			)}
+
+			{loggedIn && (
+				
+				
 				<Link to='/trips/new'>
+					
 					<Button className='mb-4'>Add a trip</Button>
 				</Link>
+				
 			)}
 
 			<Row xs={1} s={2} md={3}>

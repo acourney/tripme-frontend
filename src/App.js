@@ -10,6 +10,7 @@ import TripDetail from './components/TripDetail/TripDetail';
 import TripCreate from './components/TripCreate/TripCreate';
 import TripEdit from './components/TripEdit/TripEdit';
 import MakeGroup from './components/MakeGroup/MakeGroup';
+import AddFriend from './components/MakeGroup/AddFriend';
 import GettingStarted from './components/GettingStarted/GettingStarted';
 import ChatEngineMessenger from './components/Messaging/ChatEngineMessenger'
 
@@ -103,7 +104,7 @@ function App() {
 						/>
 						<Route
 							path='/trips'
-							element={<Trips loggedIn={loggedIn} />}
+							element={<Trips userInfo={userInfo} loggedIn={loggedIn} />}
 						/>
 						<Route
 							path='/trips/:id'
@@ -111,8 +112,17 @@ function App() {
 								<TripDetail userInfo={userInfo} loggedIn={loggedIn} />
 							}
 						/>
+						<Route
+							path='/trips/:id/edit'
+							element={
+								<TripEdit userInfo={userInfo} loggedIn={loggedIn} />
+							}
+						/>
 						<Route path='/trips/:id/add-group-member' element={<MakeGroup />} />
 						
+						<Route path='/trips/:id/add-friends' element={<AddFriend userInfo={userInfo} loggedIn={loggedIn} />} />
+
+
 						<Route path='/getting-started' element={<GettingStarted />} />
 
 						<Route path='/message-center' element={<ChatEngineMessenger />} />

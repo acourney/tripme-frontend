@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { useParams, useNavigate } from 'react-router-dom';
-import TripForm from '../TripForm/TripForm';
 import useTripDetail from '../../hooks/useTripDetail';
 import API_URL from '../../apiConfig';
 
-function TripEdit(props) {
-	const { id } = useParams();
+const AddFriend = (props) => {
+    const { id } = useParams();
 	let navigate = useNavigate();
 	const [error, setError] = useState(false);
 	const [formData, setFormData] = useState(null);
@@ -31,7 +31,7 @@ function TripEdit(props) {
 		const formData = new FormData(event.target);
 		try {
 			const response = await fetch(API_URL + `trips/${id}`, {
-				method: 'PUT',
+				method: 'PATCH',
 				body: formData,
 				headers: {
 					Authorization: `Token ${localStorage.getItem('token')}`,
@@ -48,26 +48,33 @@ function TripEdit(props) {
 		setFormData({ ...formData, [event.target.name]: event.target.value });
 	};
 
-	const handleFileUpload = async (event) => {
-		setFormData({ ...formData, photo: event.target.files[0] });
-	};
-
-	if (!formData) {
+    if (!formData) {
 		return null;
 	}
 
 	return (
-		<div>
-			<h2>Edit trip</h2>
-			<TripForm
-				handleSubmit={handleSubmit}
-				handleChange={handleChange}
-				handleFileUpload={handleFileUpload}
-				formData={formData}
-			/>
+		<div className='w-75 p-3'>
+            <Form onSubmit={handleSubmit} encType='multipart/form-data'>
+
+            <Form.Group controlId='members'>
+					<Form.Label>Friend's user ID:</Form.Label>
+					<Form.Control
+						type='text'
+						name='members'
+						onChange={handleChange}></Form.Control>
+				</Form.Group>
+
+				<Button className='mt-4' type='submit' disabled={error}>
+					Submit
+				</Button>
+				{error && (
+					<Alert variant='danger'>
+						Oops, something went wrong! Please try again!
+					</Alert>
+				)}
+			</Form>
 		</div>
 	);
-}
+};
 
-export default TripEdit;
-
+export default AddFriend;
