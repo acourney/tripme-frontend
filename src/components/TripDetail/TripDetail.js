@@ -57,7 +57,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
   }, [trip]);
 
   const handleDelete = async (event) => {
-    const confirm = window.confirm("Are you sure you want to delete?");
+    const confirm = window.confirm("Remove this trip?");
 
     if (confirm) {
       try {
@@ -73,6 +73,29 @@ const TripDetail = ({ userInfo, loggedIn }) => {
         }
       } catch (error) {
         console.log(error);
+      }
+    }
+  };
+
+  const handleRemoveTodoListItem = async (event) => {
+    const confirm = window.confirm("Remove todo list item?");
+
+    if (todos) {
+      if (confirm) {
+        try {
+          const response = await fetch(API_URL + `todos/${event.target.id}`, {
+            method: "DELETE",
+            headers: {
+              Authorization: `Token ${localStorage.getItem("token")}`,
+            },
+          });
+
+          if (response.status === 204) {
+            window.location.reload();
+          }
+        } catch (error) {
+          console.log(error);
+        }
       }
     }
   };
@@ -118,7 +141,11 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 
               {userInfo && userInfo.username === todo.owner && (
                 <div>
-                  <Button id={todo.id} variant="outline-warning">
+                  <Button
+                    id={todo.id}
+                    onClick={handleRemoveTodoListItem}
+                    variant="outline-warning"
+                  >
                     Remove Item ✔
                   </Button>
                 </div>
