@@ -25,7 +25,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 				.then((res) => res.json())
 				.then((data) => {
 					console.log(data)
-					setTripMembers([...tripMembers, data])
+					setTripMembers([data])
 				})
 				.catch((console.log('fetch req error')));
 			});

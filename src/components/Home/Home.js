@@ -7,7 +7,9 @@ import './Home.css';
 const Home = () => {
 	return (
         <div className='home-container'>
-
+		<LinkContainer to='/getting-started'>
+			<Navbar.Brand>New to TripMe? Click Here to Get Started</Navbar.Brand>
+		</LinkContainer>
 
 		<Card className="bg-dark text-black">
 			<Card.Img src="https://imgur.com/c2bBXMS.jpg" alt="Card image" />
@@ -53,9 +55,7 @@ const Home = () => {
 
 
 
-        <LinkContainer to='/getting-started'>
-			<Navbar.Brand>New to TripMe? Click Here to Get Started</Navbar.Brand>
-		</LinkContainer>
+       
         </div>
 	);
 };

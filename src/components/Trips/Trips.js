@@ -64,9 +64,7 @@ const Trips = ({ userInfo, loggedIn }) => {
 	return (
 		<Container>
 			<h1>Trips</h1>
-			{loggedIn && (
-				<p>Your user ID is {userInfo.id}, share this with friends to be added to their trips!</p>				
-			)}
+			
 
 			{loggedIn && (
 				
