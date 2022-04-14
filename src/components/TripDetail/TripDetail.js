@@ -13,6 +13,28 @@ const TripDetail = ({ userInfo, loggedIn }) => {
   const { id } = useParams();
   const trip = useTripDetail(id);
   const [tripMembers, setTripMembers] = useState([]);
+  const [todos, setTodos] = useState([]);
+
+  const getTodos = async () => {
+    try {
+      const response = await fetch(API_URL + `trips/${id}/todos/`, {
+        method: "GET",
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`,
+        },
+      });
+      if (response.status === 200) {
+        const data = await response.json();
+        setTodos(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getTodos();
+  }, []);
 
   useEffect(() => {
     // check if there's a token in local storage
@@ -79,10 +101,6 @@ const TripDetail = ({ userInfo, loggedIn }) => {
       <h3>Destination: {trip.destination}</h3>
       <Image rounded fluid src={trip.photo} />
       <h3 className="mt-4">Todos: </h3>
-      {/* <ul>
-				<li>Book Airbnb</li>
-				<li>Pack sunblock</li>
-			</ul> */}
       {!trip.todos.length && <p>No Todos yet!</p>}
       {loggedIn && (
         <Link to={`/trips/${trip.id}/add-todo`}>
@@ -91,25 +109,21 @@ const TripDetail = ({ userInfo, loggedIn }) => {
           </Button>
         </Link>
       )}
-      {trip.todos.length > 0 &&
-        trip.todos.map((todo) => {
+
+      {todos.length > 0 &&
+        todos.map((todo) => {
           return (
-            <Container
-              className="m-4 p-5 border rounded-3 bg-light"
-              key={todo.id}
-            >
-              <h4>{todo.title}</h4>
-              <p>{todo.body}</p>
-              <small>organized by: {trip.owner}</small>
+            <div className="todo-item" key={todo.id}>
+              <li>{todo.body}</li>
+
               {userInfo && userInfo.username === todo.owner && (
                 <div>
-                  <Button variant="secondary" className="m-4">
-                    Edit
+                  <Button id={todo.id} variant="outline-warning">
+                    Remove Item ✔
                   </Button>
-                  <Button variant="danger">Delete</Button>
                 </div>
               )}
-            </Container>
+            </div>
           );
         })}
 
@@ -117,17 +131,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
       {console.log(tripMembers)}
       {tripMembers ? (
         tripMembers.map((member) => {
-          return (
-            <li key={member.id}>{member.username}</li>
-            // {userInfo && userInfo.username === todo.owner && (
-            // 		<div>
-            // 			<Button variant='secondary' className='m-4'>
-            // 				Edit
-            // 			</Button>
-            // 			<Button variant='danger'>Delete</Button>
-            // 		</div>
-            // 	)}
-          );
+          return <li key={member.id}>{member.username}</li>;
         })
       ) : (
         <li>No other users have been added to this trip</li>
