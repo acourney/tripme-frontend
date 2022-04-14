@@ -1,9 +1,49 @@
 .navbar-brand {
     display: flex;
     align-items: center;
-  }
-  .navbar-brand img {
+}
+
+.navbar-brand img {
     padding: 7px 14px;
     width: 100px;
     height: 100%;
+}
+
+.navbar .container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+
+#basic-navbar-nav {
+  font-family: 'Roboto Slab', serif;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 75%;
+
+  border-bottom: 1px solid #757575;
+
+  -webkit-box-shadow: 0px 11px 15px -9px rgba(117,117,117,0.61); 
+  box-shadow: 0px 11px 15px -9px rgba(117,117,117,0.61);
+}
+
+.navbar-nav  {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+@media screen and (min-width: 800px) {
+    
+  .row-cols-md-3 {
+      width:100%;
   }
+  .mb-4.col{
+      width: 100%;
+  }
+}

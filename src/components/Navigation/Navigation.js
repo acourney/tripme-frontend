@@ -6,12 +6,19 @@ import './Navigation.css';
 
 const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
 	return (
-		<Navbar bg='light' expand='lg' collapseOnSelect={true}>
+		<Navbar >
 			<Container>
 				<LinkContainer to='/'>
 					<Navbar.Brand><img src='https://imgur.com/LGdBtYJ.png' alt="trip me logo"/>TripMe</Navbar.Brand>
+					
 				</LinkContainer>
+				{userInfo && (
+							<Navbar.Text className='justify-content-end'>
+								Welcome, {userInfo.username}
+							</Navbar.Text>
+						)}
 				<Navbar.Toggle aria-controls='basic-navbar-nav' />
+				
 				<Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>
 					<Nav className='me-auto'>
 						<LinkContainer to='/'>
@@ -22,19 +29,17 @@ const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
 						</LinkContainer>
 					</Nav>
 					<Nav>
-						{userInfo && (
-							<Navbar.Text className='justify-content-end'>
-								You are signed in as: {userInfo.username}
-							</Navbar.Text>
-						)}
+						
 						{loggedIn ? (
 							<>
-								<LinkContainer to='/'>
-									<Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
-								</LinkContainer>
 								<LinkContainer to='/message-center'>
 									<Nav.Link>Message Center</Nav.Link>
 								</LinkContainer>
+
+								<LinkContainer to='/'>
+									<Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
+								</LinkContainer>
+								
 							</>
 						) : (
 							<>

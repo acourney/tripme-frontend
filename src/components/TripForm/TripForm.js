@@ -41,7 +41,7 @@ const TripForm = ({
 				</Form.Group>
 				
 
-				<Button className='mt-4' type='submit' disabled={error}>
+				<Button variant='outline-info' type='submit' disabled={error}>
 					Submit
 				</Button>
 				{error && (

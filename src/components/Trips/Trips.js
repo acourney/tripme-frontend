@@ -56,25 +56,28 @@ const Trips = ({ userInfo, loggedIn }) => {
 	if (!trips.length) {
 		{loggedIn && (
 			<Link to='/trips/new'>
-				<Button className='mb-4'>Add a trip</Button>
+				<Button variant='outline-info'>Add a trip</Button>
 			</Link>
 		)}
 	}
 
 	return (
 		<Container>
-			<h1>Trips</h1>
-			
 
-			{loggedIn && (
+			<div className='page-title' >
+				<h1>Trips</h1>
 				
-				
-				<Link to='/trips/new'>
+
+				{loggedIn && (
 					
-					<Button className='mb-4'>Add a trip</Button>
-				</Link>
-				
-			)}
+					
+					<Link to='/trips/new'>
+						
+						<Button variant='outline-info'>Add a trip</Button>
+					</Link>
+					
+				)}
+			</div>
 
 			<Row xs={1} s={2} md={3}>
 				{trips.map((trip) => {
@@ -99,6 +102,7 @@ const Trips = ({ userInfo, loggedIn }) => {
 					);
 				})}
 			</Row>
+
 		</Container>
 	);
 };

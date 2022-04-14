@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useTripDetail from '../../hooks/useTripDetail';
 import API_URL from '../../apiConfig';
 
+import './AddFriend.css';
+
 const AddFriend = ({userInfo, loggedIn}) => {
     const { id } = useParams();
 	let navigate = useNavigate();
@@ -107,8 +109,9 @@ const AddFriend = ({userInfo, loggedIn}) => {
 	return (
 		<>
 		{userInfo && (
-		<div className='w-75 p-3'>
-			<Form onSubmit={handleSubmit} encType='multipart/form-data'>
+		<div className='w-75 p-3' id='friend-dropdown-container'>
+			<h3>Select your friend's email:</h3>
+			<Form onSubmit={handleSubmit} encType='multipart/form-data' id='friend-dropdown'>
 
 				{/* <Form.Group controlId='members'>
 						<Form.Label>Friend's user ID:</Form.Label>
@@ -131,7 +134,7 @@ const AddFriend = ({userInfo, loggedIn}) => {
 						
 					</Form.Select>
 
-					<Button className='mt-4' type='submit' disabled={error}>
+					<Button variant='outline-info' type='submit' disabled={error}>
 						Submit
 					</Button>
 					{error && (

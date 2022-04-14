@@ -7,6 +7,9 @@ import API_URL from '../../apiConfig';
 import ChatEngineMessenger from '../Messaging/ChatEngineMessenger';
 import MakeGroup from '../MakeGroup/MakeGroup';
 
+
+import './TripDetail.css';
+
 const TripDetail = ({ userInfo, loggedIn }) => {
 	let navigate = useNavigate();
 	const { id } = useParams();
@@ -67,12 +70,10 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 				</div>
 				{userInfo && userInfo.id === trip.owner && (
 					<div>
-						<Link
-							to={`/trips/${trip.id}/edit`}
-							className='btn btn-secondary'>
-							Edit
+						<Link to={`/trips/${trip.id}/edit`}>
+							<Button variant='outline-info'>Edit</Button>
 						</Link>
-						<Button onClick={handleDelete} variant='danger'>
+						<Button onClick={handleDelete} variant='outline-danger'>
 							Delete
 						</Button>
 					</div>
@@ -80,7 +81,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 			</div>
 			<h3>Destination: {trip.destination}</h3>
 			<Image rounded fluid src={trip.photo} />
-			<h2 className='mt-4'>Todos: </h2>
+			<h3 className='mt-4'>Todos: </h3>
 			<ul>
 				<li>Book Airbnb</li>
 				<li>Pack sunblock</li>
@@ -112,8 +113,8 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 				{/* {!trip.todos.length && <p>No todos yet!</p>} */}
 			{/* {loggedIn && <Button className='mb-5'>Write a todo</Button>} */}
 			{/* <Container className='m-4 p-5 border rounded-3 bg-light'> */}
-			<small>organized by: {trip.owner}</small>
-			<h4>Travel Buddies:</h4>
+
+			<h3>Travel Buddies:</h3>
 			{tripMembers ? (tripMembers.map((member) => {
 					return (
 						<li key={member.id}>{member.username}</li>
@@ -146,7 +147,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 				{/* </Container> */}
 
 				<LinkContainer to={`/trips/${trip.id}/add-friends`}>
-					<Nav.Link><Button>Add Friends to Your Group</Button></Nav.Link>
+					<Nav.Link><Button variant='outline-info'>Add Friends to Your Group</Button></Nav.Link>
 				</LinkContainer>
 				
 				
