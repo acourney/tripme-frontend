@@ -17,15 +17,17 @@ const Home = () => {
 		<Card className="bg-dark text-black" id='brand-card'>
 			<Card.Img src="https://imgur.com/tDExJMZ.jpg" alt="Card image" />
 			<Card.ImgOverlay>
+		
 				<Card.Title>TripMe</Card.Title>
 
 				<Card.Text>Travel Planning</Card.Text>
 			</Card.ImgOverlay>
 		</Card>
 
-		<Card className="bg-dark text-black">
-			<Card.Img src="https://imgur.com/nK3UMrH.jpg" alt="Card image" />
+		<Card className="bg-dark text-black" id='brand-card'>
+			<Card.Img src="https://imgur.com/UrBjdRV.jpg" alt="Card image" />
 			<Card.ImgOverlay>
+			
 				<Card.Title>TripMe</Card.Title>
 				<Card.Text>
 					View your planned trips
@@ -34,9 +36,10 @@ const Home = () => {
 			</Card.ImgOverlay>
 		</Card>
 
-		<Card className="bg-dark text-black" id='message-card'>
-			<Card.Img src="https://imgur.com/KwGNlLq.jpg" alt="Card image" />
+		<Card className="bg-dark text-black" id='brand-card'>
+			<Card.Img src="https://imgur.com/KsQ2RQo.jpg" alt="Card image" />
 			<Card.ImgOverlay>
+			    
 				<Card.Title>TripMe</Card.Title>
 				<Card.Text>
 					Message your friends
@@ -46,8 +49,9 @@ const Home = () => {
 		</Card>
 
 		<Card className="bg-dark text-black">
-			<Card.Img src="https://imgur.com/dQiPknL.jpg" alt="Card image" />
+			<Card.Img src="https://imgur.com/VYET5FT.jpg" alt="Card image" />
 			<Card.ImgOverlay>
+			
 				<Card.Title>TripMe</Card.Title>
 				<Card.Text>
 					View trip details

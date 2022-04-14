@@ -112,14 +112,6 @@ const AddFriend = ({userInfo, loggedIn}) => {
 		<div className='w-75 p-3' id='friend-dropdown-container'>
 			<h3>Select your friend's email:</h3>
 			<Form onSubmit={handleSubmit} encType='multipart/form-data' id='friend-dropdown'>
-
-				{/* <Form.Group controlId='members'>
-						<Form.Label>Friend's user ID:</Form.Label>
-						<Form.Control
-							type='text'
-							name='members'
-							onChange={handleChange}></Form.Control>
-					</Form.Group> */}
 					
 					<Form.Select aria-label="Default select example" onChange={handleChange} >
 						<option>Open this select menu</option>

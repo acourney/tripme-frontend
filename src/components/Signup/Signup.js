@@ -157,7 +157,7 @@ const Signup = () => {
 						onBlur={handlePasswordMatch}
 					/>
 				</Form.Group>
-				<Button type='submit' disabled={error}>
+				<Button variant='outline-info' type='submit' disabled={error}>
 					Sign up
 				</Button>
 				{error && <Alert variant='danger'>Passwords must match!</Alert>}

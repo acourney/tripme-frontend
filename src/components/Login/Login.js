@@ -75,7 +75,7 @@ const Login = ({ handleSetLoggedIn }) => {
 						onChange={handleChange}
 					/>
 				</Form.Group>
-				<Button type='submit'>Login</Button>
+				<Button variant='outline-info' type='submit'>Login</Button>
 			</Form>
 			{error && (
 				<Alert variant='warning' className='mt-4'>

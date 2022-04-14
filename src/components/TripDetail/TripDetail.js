@@ -5,7 +5,7 @@ import { Container, Image, Button, Navbar, Nav } from 'react-bootstrap';
 import useTripDetail from '../../hooks/useTripDetail';
 import API_URL from '../../apiConfig';
 import ChatEngineMessenger from '../Messaging/ChatEngineMessenger';
-import MakeGroup from '../MakeGroup/MakeGroup';
+
 
 
 import './TripDetail.css';
