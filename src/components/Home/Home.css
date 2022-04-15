@@ -48,3 +48,9 @@
 a .navbar-brand {
     padding-bottom: 25px;
 }
+
+@media screen and (max-width: 768px) {
+    .card-img-overlay { 
+        font-size: .75rem;
+    }
+}
