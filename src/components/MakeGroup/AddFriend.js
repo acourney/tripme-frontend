@@ -15,7 +15,7 @@ const AddFriend = ({ userInfo, loggedIn }) => {
 
   const makeUserList = async () => {
     try {
-      const response = await fetch(API_URL + `users`, {
+      const response = await fetch(API_URL + `users/`, {
         method: "GET",
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`,
