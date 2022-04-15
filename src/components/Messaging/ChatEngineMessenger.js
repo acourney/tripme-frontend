@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ChatEngine } from "react-chat-engine";
 
 import API_URL from "../../apiConfig";
-import CHATENGINE_PROJECT_ID from "../../messengerConfig";
+// import CHATENGINE_PROJECT_ID from "../../messengerConfig";
 
 function ChatEngineMessenger() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -46,7 +46,7 @@ function ChatEngineMessenger() {
         <ChatEngine
           height="75vh"
           width="100%"
-          projectID={CHATENGINE_PROJECT_ID}
+          projectID={process.env.CHATENGINE_PROJECT_ID}
           userName={userInfo.username}
           userSecret={localStorage.getItem("password")}
         />
