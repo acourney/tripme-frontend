@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+
 import { Container, Image, Button, Navbar, Nav } from "react-bootstrap";
 import useTripDetail from "../../hooks/useTripDetail";
+import DisplayTripMembers from "../DisplayTripMembers/DisplayTripMembers";
 import API_URL from "../../apiConfig";
-import ChatEngineMessenger from "../Messaging/ChatEngineMessenger";
 
 import "./TripDetail.css";
 
@@ -12,7 +13,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
   let navigate = useNavigate();
   const { id } = useParams();
   const trip = useTripDetail(id);
-  const [tripMembers, setTripMembers] = useState([]);
+
   const [todos, setTodos] = useState([]);
 
   const getTodos = async () => {
@@ -35,26 +36,6 @@ const TripDetail = ({ userInfo, loggedIn }) => {
   useEffect(() => {
     getTodos();
   }, []);
-
-  useEffect(() => {
-    // check if there's a token in local storage
-    if (trip) {
-      // if so, set logged in to true
-      console.log("printing members:");
-      console.log(trip.members);
-      trip.members.map((member) => {
-        fetch(API_URL + "users/" + member, {
-          headers: { Authorization: `Token ${localStorage.getItem("token")}` },
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            setTripMembers([data]);
-          })
-          .catch(console.log("fetch req error"));
-      });
-    }
-  }, [trip]);
 
   const handleDelete = async (event) => {
     const confirm = window.confirm("Remove this trip?");
@@ -105,7 +86,7 @@ const TripDetail = ({ userInfo, loggedIn }) => {
   }
 
   return (
-    <Container className="p-5 border rounded-3 bg-light">
+    <Container>
       <div className="d -flex justify-content-between">
         <div>
           <h2>{trip.label}</h2>
@@ -154,16 +135,71 @@ const TripDetail = ({ userInfo, loggedIn }) => {
           );
         })}
 
-      <h3>Travel Buddies:</h3>
-      {console.log(tripMembers)}
-      {tripMembers ? (
-        tripMembers.map((member) => {
-          return <li key={member.id}>{member.username}</li>;
-        })
-      ) : (
-        <li>No other users have been added to this trip</li>
-      )}
+      {/* <DisplayTripMembers /> */}
 
+      {/* <h3>Travel Buddies:</h3>
+      {membersLoaded ? (
+        console.log(tripMembers[1])
+      ) : ( */}
+      {/* // tripMembers.map((member) => {
+        //   <div className="member" key={member.id}>
+        //     <li>{member}</li>
+        //   </div>;
+        // })
+        // tripMembers.map((member) => {
+        //   <div className="todo-item" key={member.id}>
+        //     <li>{member.username}</li>
+
+        //     {userInfo && userInfo.username === trip.owner && (
+        //       <div>
+        //         <Button
+        //           id={member.id}
+        //           onClick={handleRemoveTodoListItem}
+        //           variant="outline-warning"
+        //         >
+        //           Remove Friend from Trip
+        //         </Button>
+        //       </div>
+        //     )}
+        //   </div>;
+        // })
+        // <li>No other users have been added to this trip</li>
+      // )}
+      {/* {membersLoaded &&
+        tripMembers.length > 0 &&
+        tripMembers.map((member) => {
+          return (
+            <div className="todo-item" key={member.id}>
+              <li>{member.username}</li>
+
+              {userInfo && userInfo.username === trip.owner && (
+                <div>
+                  <Button
+                    id={member.id}
+                    onClick={handleRemoveTodoListItem}
+                    variant="outline-warning"
+                  >
+                    Remove Friend from Trip 
+                  </Button> 
+                </div>
+              )}
+            </div>
+          );
+        })} */}
+
+      {/* {
+        tripMembers.length > 0 && <p>tripMembers has length</p>
+        // tripMembers.map((member) => {
+        //   <p>{member}</p>;
+        //   // return <li key={member.id}>{member.username}</li>;
+        // })}
+      } */}
+      {/* {tripMembers.length == 0 ? (
+        <li>No other users have been added to this trip</li>
+      ) : null} */}
+      <br />
+      <br />
+      <h3>Share this trip with friends:</h3>
       <LinkContainer to={`/trips/${trip.id}/add-friends`}>
         <Nav.Link>
           <Button variant="outline-info">Add Friends to Your Group</Button>

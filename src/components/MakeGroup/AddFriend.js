@@ -13,7 +13,6 @@ const AddFriend = ({ userInfo, loggedIn }) => {
   const [members, setMembers] = useState([]);
   const [userList, setUserList] = useState(null);
 
-  // try PUT request instead of PATCH
   const makeUserList = async () => {
     try {
       const response = await fetch(API_URL + `users`, {
