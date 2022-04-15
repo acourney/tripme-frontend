@@ -3,6 +3,7 @@ import { Form, Button, Alert } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import API_URL from "../../apiConfig";
 
+
 import "./AddFriend.css";
 
 const AddFriend = ({ userInfo, loggedIn }) => {
@@ -18,7 +19,7 @@ const AddFriend = ({ userInfo, loggedIn }) => {
       const response = await fetch(API_URL + `users/`, {
         method: "GET",
         headers: {
-          Authorization: `Token ${localStorage.getItem("token")}`,
+          Authorization: `Token ${process.env.REACT_APP_ADMIN_TOKEN}`,
         },
       });
       if (response.status === 200) {

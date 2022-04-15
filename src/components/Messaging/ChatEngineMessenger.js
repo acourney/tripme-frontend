@@ -40,14 +40,13 @@ function ChatEngineMessenger() {
 
   return (
     <>
-      {console.log(process.env.CHATENGINE_PROJECT_ID)}
       {!userInfo ? (
         <p>Log in To Chat with Friends!</p>
       ) : (
         <ChatEngine
           height="75vh"
           width="100%"
-          projectID='9e7ab93a-c0ed-495a-bb2e-eb8e85401a0e'
+          projectID={process.env.REACT_APP_CHATENGINE_PROJECT_ID}
           userName={userInfo.username}
           userSecret={localStorage.getItem("password")}
         />
