@@ -10,7 +10,9 @@ On the tripme website, you can create trips, make todo lists for each trip, and 
 Using a chatengine.io message center, you can create chat groups and message your friends to plan trips together.
 
 ## Screenshots:
-
+<img width="750" alt="details" src="https://user-images.githubusercontent.com/34990079/163650342-22232c9a-82f9-4fd3-9390-9cd438f2730b.png">
+<img width="750" alt="list" src="https://user-images.githubusercontent.com/34990079/163650349-b9cbcc34-d416-4730-8f95-e61d6c062b2c.png">
+<img width="750" alt="message" src="https://user-images.githubusercontent.com/34990079/163650350-f5315698-8e77-4550-b9b7-38408c3acd48.png">
 
 
 ## Api used:
