@@ -22,13 +22,9 @@ function TodoForm({ userInfo, loggedIn }) {
 
     for (const key in todo) {
       data.append(key, todo[key]);
-      console.log(key);
-      console.log(todo[key]);
     }
     JSON.stringify(data);
     data.append("trip_id", parseInt(id));
-
-    console.log(...data);
 
     try {
       const response = await fetch(API_URL + `trips/${id}/todos/`, {

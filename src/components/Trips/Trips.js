@@ -30,7 +30,6 @@ const Trips = ({ userInfo, loggedIn }) => {
         });
 
         setTrips(uniqueData);
-        console.log(uniqueData);
       } else {
         setError(true);
       }

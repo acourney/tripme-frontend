@@ -42,7 +42,6 @@ function useMemberList(id) {
         if (response.status === 200) {
           const data = await response.json();
           memberArray.push(data);
-          console.log(memberArray);
         }
       });
     } catch (error) {

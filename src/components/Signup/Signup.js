@@ -57,7 +57,6 @@ const Signup = () => {
         // set error to true
         setServerError(true);
       }
-      console.log(response);
     } catch (error) {
       console.log(error);
       setServerError(true);
@@ -94,13 +93,10 @@ const Signup = () => {
     };
 
     axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-      })
+      .then(function (response) {})
       .catch(function (error) {
         console.log(error);
       });
-    console.log("user added to chat api");
   }, [formData]);
 
   return (

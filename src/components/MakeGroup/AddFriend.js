@@ -23,7 +23,6 @@ const AddFriend = ({ userInfo, loggedIn }) => {
       });
       if (response.status === 200) {
         const data = await response.json();
-        console.log(data);
         setUserList(data);
       }
     } catch (error) {
@@ -38,7 +37,6 @@ const AddFriend = ({ userInfo, loggedIn }) => {
         const data = await response.json();
         setFormData(data);
         setMembers(data.members);
-        console.log(data.members);
       }
     } catch (error) {
       console.log(error);
@@ -52,7 +50,6 @@ const AddFriend = ({ userInfo, loggedIn }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("EVENT TARGET: " + event.target);
 
     delete formData.members;
     delete formData.photo;
@@ -65,8 +62,6 @@ const AddFriend = ({ userInfo, loggedIn }) => {
     members.map((member) => {
       data.append("members", parseInt(member));
     });
-
-    console.log(...data);
 
     try {
       const response = await fetch(API_URL + `trips/${id}`, {

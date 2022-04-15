@@ -57,13 +57,10 @@ function DisplayTripMembers(props) {
 
   useEffect(() => {
     getMemberIds();
-
-    console.log("done with member ids");
   }, [trip]);
 
   useEffect(() => {
     getMembers();
-    console.log("done with member ids");
   }, [memberIds]);
 
   if (!trip) {
