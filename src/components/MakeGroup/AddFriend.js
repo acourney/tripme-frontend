@@ -67,31 +67,24 @@ const AddFriend = ({ userInfo, loggedIn }) => {
     });
 
     console.log(...data);
-    // setFormData({ ...formData, members: members});
-    // console.log(formData)
 
     try {
       const response = await fetch(API_URL + `trips/${id}`, {
         method: "PATCH",
         body: data,
         headers: {
-          // 'Content-Type': 'application/json',
           Authorization: `Token ${localStorage.getItem("token")}`,
         },
       });
 
       if (response.status === 200) {
-        // console.log('patch worked')
-        // console.log(...data)
         navigate(`/trips/${id}`);
       }
     } catch (error) {}
   };
 
   const handleChange = async (event) => {
-    // console.log('FORM DATA MEMBERS: ' + formData.members)
     setMembers([...members, parseInt(event.target.value)]);
-    // setFormData({ ...formData, members: members});
   };
 
   if (!formData) {

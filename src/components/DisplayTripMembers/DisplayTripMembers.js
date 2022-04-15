@@ -55,8 +55,6 @@ function DisplayTripMembers(props) {
     }
   };
 
-  // useEffect(async () => {}, []);
-
   useEffect(() => {
     getMemberIds();
 
@@ -68,38 +66,6 @@ function DisplayTripMembers(props) {
     console.log("done with member ids");
   }, [memberIds]);
 
-  // const trip = useTripDetail(id);
-  // const members = useMemberList(id);
-
-  // useEffect(() => {
-  //   if (trip) {
-  //     // console.log("printing members:");
-  //     // console.log(trip.members);
-  //     trip.members.map((member) => {
-  //       fetch(API_URL + "users/" + member, {
-  //         headers: { Authorization: `Token ${localStorage.getItem("token")}` },
-  //       })
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           console.log(data);
-  //           memberArray.push(data);
-  //           // setTripMembers([data]);
-  //         })
-  //         .catch(console.error());
-  //     });
-  //   }
-  //   setTripMembers(memberArray);
-  // }, [trip]);
-
-  // useEffect(() => {
-  //   setMembers(tripMembers);
-  // }, [tripMembers]);
-
-  // useEffect(() => {
-  //   if (members.length > 0) {
-  //     setLoading(false);
-  //   }
-  // }, [members]);
   if (!trip) {
     return null;
   }
@@ -112,8 +78,6 @@ function DisplayTripMembers(props) {
     return (
       <div className="friend-container">
         <h3 className="mt-4">Travel Buddies: </h3>
-        {/* {members && console.log("members has length")} */}
-        {/* {members && console.log(...members)} */}
 
         <LinkContainer to={`/trips/${id}/add-friends`}>
           <Nav.Link>

@@ -43,8 +43,6 @@ function useMemberList(id) {
           const data = await response.json();
           memberArray.push(data);
           console.log(memberArray);
-
-          // setTripMembersIds(data.members);
         }
       });
     } catch (error) {

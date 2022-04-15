@@ -4,7 +4,6 @@ import { LinkContainer } from "react-router-bootstrap";
 
 import { Container, Image, Button, Navbar, Nav } from "react-bootstrap";
 import useTripDetail from "../../hooks/useTripDetail";
-import DisplayTripMembers from "../DisplayTripMembers/DisplayTripMembers";
 import API_URL from "../../apiConfig";
 
 import "./TripDetail.css";
@@ -135,68 +134,6 @@ const TripDetail = ({ userInfo, loggedIn }) => {
           );
         })}
 
-      {/* <DisplayTripMembers /> */}
-
-      {/* <h3>Travel Buddies:</h3>
-      {membersLoaded ? (
-        console.log(tripMembers[1])
-      ) : ( */}
-      {/* // tripMembers.map((member) => {
-        //   <div className="member" key={member.id}>
-        //     <li>{member}</li>
-        //   </div>;
-        // })
-        // tripMembers.map((member) => {
-        //   <div className="todo-item" key={member.id}>
-        //     <li>{member.username}</li>
-
-        //     {userInfo && userInfo.username === trip.owner && (
-        //       <div>
-        //         <Button
-        //           id={member.id}
-        //           onClick={handleRemoveTodoListItem}
-        //           variant="outline-warning"
-        //         >
-        //           Remove Friend from Trip
-        //         </Button>
-        //       </div>
-        //     )}
-        //   </div>;
-        // })
-        // <li>No other users have been added to this trip</li>
-      // )}
-      {/* {membersLoaded &&
-        tripMembers.length > 0 &&
-        tripMembers.map((member) => {
-          return (
-            <div className="todo-item" key={member.id}>
-              <li>{member.username}</li>
-
-              {userInfo && userInfo.username === trip.owner && (
-                <div>
-                  <Button
-                    id={member.id}
-                    onClick={handleRemoveTodoListItem}
-                    variant="outline-warning"
-                  >
-                    Remove Friend from Trip 
-                  </Button> 
-                </div>
-              )}
-            </div>
-          );
-        })} */}
-
-      {/* {
-        tripMembers.length > 0 && <p>tripMembers has length</p>
-        // tripMembers.map((member) => {
-        //   <p>{member}</p>;
-        //   // return <li key={member.id}>{member.username}</li>;
-        // })}
-      } */}
-      {/* {tripMembers.length == 0 ? (
-        <li>No other users have been added to this trip</li>
-      ) : null} */}
       <br />
       <br />
       <h3>Share this trip with friends:</h3>

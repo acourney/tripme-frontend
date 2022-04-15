@@ -35,7 +35,6 @@ function TodoForm({ userInfo, loggedIn }) {
         method: "POST",
         body: data,
         headers: {
-          // "Content-Type": "application/json",
           Authorization: `Token ${localStorage.getItem("token")}`,
         },
       });
