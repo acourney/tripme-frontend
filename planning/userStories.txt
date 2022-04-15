@@ -1,0 +1,10 @@
+-- MVP User stories --
+As a user, I want to be able to keep track of my upcoming trips all in one site
+As a user, I want to be able to log in and only see my own trips, not all trips saved to the app's API
+As a user, I want to be able to add todo items and people to my trips
+As a user, I want to be able to message the people I will be traveling with
+
+-- Stretch goal User stories --
+As a user, I'd like to be able to find flight information on this site
+As a user, I would like to add a packing list to a specific trip
+
