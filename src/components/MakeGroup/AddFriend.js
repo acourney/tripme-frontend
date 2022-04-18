@@ -15,11 +15,12 @@ const AddFriend = ({ userInfo, loggedIn }) => {
   const [userList, setUserList] = useState(null);
 
   const makeUserList = async () => {
+    
     try {
       const response = await fetch(API_URL + `users/`, {
         method: "GET",
         headers: {
-          Authorization: `Token ${process.env.REACT_APP_ADMIN_TOKEN}`,
+          Authorization: `Token 30a1f24ce4c950b1795ead1d5f2748bd0858cf46`,
         },
       });
       if (response.status === 200) {
