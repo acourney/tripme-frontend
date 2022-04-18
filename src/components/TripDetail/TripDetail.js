@@ -25,7 +25,13 @@ const TripDetail = ({ userInfo, loggedIn }) => {
       });
       if (response.status === 200) {
         const data = await response.json();
-        setTodos(data);
+        
+        data.map((todo_item) => {
+          if (todo_item.trip_id === parseInt(id)) {
+            setTodos(data);
+          }
+        })
+        
       }
     } catch (error) {
       console.log(error);
@@ -114,25 +120,28 @@ const TripDetail = ({ userInfo, loggedIn }) => {
             </Link>
           )}
 
-          {todos.length > 0 &&
+          {todos.length > 0 && 
             todos.map((todo) => {
-              return (
-                <div className="todo-item" key={todo.id}>
-                  <li>{todo.body}</li>
-
-                  {userInfo && userInfo.username === todo.owner && (
-                    <div>
-                      <Button
-                        id={todo.id}
-                        onClick={handleRemoveTodoListItem}
-                        variant="outline-warning"
-                      >
-                        Remove Item ✔
-                      </Button>
-                    </div>
-                  )}
-                </div>
-              );
+              if (todo.trip_id === parseInt(id)) {
+                return (
+                  <div className="todo-item" key={todo.id}>
+                    <li>{todo.body}</li>
+  
+                    {userInfo && userInfo.username === todo.owner && (
+                      <div>
+                        <Button
+                          id={todo.id}
+                          onClick={handleRemoveTodoListItem}
+                          variant="outline-warning"
+                        >
+                          Remove Item ✔
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              
             })}
         
 
