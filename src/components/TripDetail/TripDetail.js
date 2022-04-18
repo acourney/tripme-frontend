@@ -86,63 +86,68 @@ const TripDetail = ({ userInfo, loggedIn }) => {
 
   return (
     <Container>
-      <div className="d -flex justify-content-between">
-        <div>
+      <div className='trip-details-all-content'>
+        <div className="trip-details-trip-content">
           <h2>{trip.label}</h2>
-        </div>
-        {userInfo && userInfo.id === trip.owner && (
-          <div>
-            <Link to={`/trips/${trip.id}/edit`}>
-              <Button variant="outline-info">Edit</Button>
-            </Link>
-            <Button onClick={handleDelete} variant="outline-danger">
-              Delete
-            </Button>
-          </div>
-        )}
-      </div>
-      <h3>Destination: {trip.destination}</h3>
-      <Image rounded fluid src={trip.photo} />
-      <h3 className="mt-4">Todos: </h3>
-      {!trip.todos.length && <p>No Todos yet!</p>}
-      {loggedIn && (
-        <Link to={`/trips/${trip.id}/add-todo`}>
-          <Button className="mb-5" variant="outline-info">
-            Add A Todo Item
-          </Button>
-        </Link>
-      )}
-
-      {todos.length > 0 &&
-        todos.map((todo) => {
-          return (
-            <div className="todo-item" key={todo.id}>
-              <li>{todo.body}</li>
-
-              {userInfo && userInfo.username === todo.owner && (
+          <Image rounded fluid src={trip.photo} />
+          <div className="dest-and-edit-buttons">
+            <h3>Destination: {trip.destination}</h3>
+            {userInfo && userInfo.id === trip.owner && (
                 <div>
-                  <Button
-                    id={todo.id}
-                    onClick={handleRemoveTodoListItem}
-                    variant="outline-warning"
-                  >
-                    Remove Item ✔
+                  <Link to={`/trips/${trip.id}/edit`}>
+                    <Button variant="outline-info">Edit</Button>
+                  </Link>
+                  <Button onClick={handleDelete} variant="outline-danger">
+                    Delete
                   </Button>
                 </div>
               )}
             </div>
-          );
-        })}
+        </div>
+        <div className="trip-details-todo-and-friends-content">
+          <h3 className="todos-h3">Todos: </h3>
+          {loggedIn && (
+            <Link to={`/trips/${trip.id}/add-todo`}>
+              <Button className="mb-5" variant="outline-info">
+                Add A Todo Item
+              </Button>
+            </Link>
+          )}
 
-      <br />
-      <br />
-      <h3>Share this trip with friends:</h3>
-      <LinkContainer to={`/trips/${trip.id}/add-friends`}>
-        <Nav.Link>
-          <Button variant="outline-info">Add Friends to Your Group</Button>
-        </Nav.Link>
-      </LinkContainer>
+          {todos.length > 0 &&
+            todos.map((todo) => {
+              return (
+                <div className="todo-item" key={todo.id}>
+                  <li>{todo.body}</li>
+
+                  {userInfo && userInfo.username === todo.owner && (
+                    <div>
+                      <Button
+                        id={todo.id}
+                        onClick={handleRemoveTodoListItem}
+                        variant="outline-warning"
+                      >
+                        Remove Item ✔
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+        
+
+            <br />
+            <br />
+            <h3>Share this trip with friends:</h3>
+            <LinkContainer to={`/trips/${trip.id}/add-friends`}>
+              <Nav.Link>
+                <Button variant="outline-info">Add Friends to Your Group</Button>
+              </Nav.Link>
+            </LinkContainer>
+          </div>
+      </div>
     </Container>
+
   );
 };
 

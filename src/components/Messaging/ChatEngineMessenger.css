@@ -1,0 +1,15 @@
+.chat-engine-container {
+    width: 90%;
+}
+
+@media screen and (max-width: 800px) {
+    .chat-engine-container {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .chat-engine-container {
+        width: 40%;
+    }
+}

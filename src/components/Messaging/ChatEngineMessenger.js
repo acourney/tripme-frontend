@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { ChatEngine } from "react-chat-engine";
 
+import './ChatEngineMessenger.css';
+
 import API_URL from "../../apiConfig";
 // import CHATENGINE_PROJECT_ID from "../../messengerConfig";
 
@@ -39,7 +41,7 @@ function ChatEngineMessenger() {
   }, []);
 
   return (
-    <>
+    <div className="chat-engine-container">
       {!userInfo ? (
         <p>Log in To Chat with Friends!</p>
       ) : (
@@ -51,7 +53,7 @@ function ChatEngineMessenger() {
           userSecret={localStorage.getItem("password")}
         />
       )}
-    </>
+    </div>
   );
 }
 

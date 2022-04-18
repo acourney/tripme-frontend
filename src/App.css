@@ -12,15 +12,17 @@ main {
 }
 
 .btn {
-   
-    margin: 7px;
-    padding: .5rem;
+	margin: 7px;
+	padding: .5rem;
 
-    font-family: 'Roboto Slab', serif;
-    
+	font-family: 'Roboto Slab', serif;
+
 }
 
-h1, h2, h3, h4{ 
+h1,
+h2,
+h3,
+h4 {
 	font-family: 'Roboto Slab', serif;
 
 }

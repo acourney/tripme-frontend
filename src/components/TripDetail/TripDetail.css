@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.todos-h3 {
+    margin-top: 0px;
+}
+
 .todo-item {
     display: flex;
     flex-direction: row;
@@ -12,3 +16,46 @@
     align-items: center;
 }
 
+.trip-details-all-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.trip-details-trip-content,
+.trip-details-todo-and-friends-content {
+    width: 50%;
+}
+
+.trip-details-todo-and-friends-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.dest-and-edit-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+@media screen and (max-width: 800px) {
+    .trip-details-all-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .trip-details-trip-content,
+    .trip-details-todo-and-friends-content {
+        width: 100%;
+    }
+}

@@ -6,10 +6,10 @@ import './Navigation.css';
 
 const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
 	return (
-		<Navbar >
-			<Container>
+		<Navbar bg='info' variant="light">
+			<Container className='nav-container'>
 				<LinkContainer to='/'>
-					<Navbar.Brand><img src='https://imgur.com/LGdBtYJ.png' alt="trip me logo"/>TripMe</Navbar.Brand>
+					<Navbar.Brand><img src='https://imgur.com/LGdBtYJ.png' alt="trip me logo"/><h2 id='nav-logo'>TripMe</h2></Navbar.Brand>
 					
 				</LinkContainer>
 				{userInfo && (
@@ -17,9 +17,8 @@ const Navigation = ({ loggedIn, handleLogout, userInfo }) => {
 								Welcome, {userInfo.username}
 							</Navbar.Text>
 						)}
-				<Navbar.Toggle aria-controls='basic-navbar-nav' />
 				
-				<Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>
+				<Navbar.Collapse id='basic-navbar-nav' >
 					<Nav className='me-auto'>
 						<LinkContainer to='/'>
 							<Nav.Link>Home</Nav.Link>
